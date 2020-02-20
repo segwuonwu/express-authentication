@@ -11,11 +11,11 @@ app.use(express.static(__dirname + "/public"));
 app.use(ejsLayouts);
 
 app.get('/', function(req, res) {
-  res.render('index');
+    res.render('index');
 });
 
 app.get('/profile', function(req, res) {
-  res.render('profile');
+    res.render('profile');
 });
 
 app.use('/auth', require('./controllers/auth'));
