@@ -20,21 +20,21 @@ router.post('/signup', (req, res) => {
         }
     }).then(([user, created]) => {
         if (created) {
-            //console.log("User created");
+            console.log("User created");
             //res.redirect('/');    
             passport.authenticate('local', {
                 successRedirect: '/',
-                successFlash: 'Account created and logged in'
+                //successFlash: 'Account created and logged in'
             })(req, res);
         } else {
-            //console.log('Email already exists');
-            req.flash('error', 'Email already exists');
+            console.log('Email already exists');
+            //req.flash('error', 'Email already exists');
             res.redirect('/auth/signup');
         }
     }).catch(err => {
-        //console.log('🙀Error occured finding or creating user');
-        //console.log(err)
-        req.flash('error', error.message);
+        console.log('🙀Error occured finding or creating user');
+        console.log(err)
+            //req.flash('error', error.message);
         res.redirect('/auth/signup');
     });
 })
