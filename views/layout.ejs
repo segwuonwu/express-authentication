@@ -8,21 +8,29 @@
 
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="/auth/signup">Signup</a>
-            <a href="/auth/login">Login</a>
-            <a href="/auth/logout">Logout</a>
-            <a href="/profile">Profile</a>
+    <!-- <%- JSON.stringify(currentUser) %> -->
+    <header class="container">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <% if (currentUser) {%>
+                    <li><a href="/auth/logout">Logout</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <%} else {%>
+                        <li><a href="/auth/signup">Signup</a></li>
+                        <li><a href="/auth/login">Login</a></li>
+                        <%}%>
+            </ul>
+
         </nav>
     </header>
     <div class="container">
-        <!-- <%-  %>JSON.stringify(currentUser) %> -->
         <h1>Authentication</h1>
-        <%- body %>
+        <% include partials/alerts %>
+            <%- body %>
     </div>
 
     <script src="//code.jquery.com/jquery.js"></script>
